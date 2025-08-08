@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandingService", "LandingService\LandingService.csproj", "{0DCA8E07-03EC-AA5C-EE5E-BFA595098CBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DCA8E07-03EC-AA5C-EE5E-BFA595098CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCA8E07-03EC-AA5C-EE5E-BFA595098CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCA8E07-03EC-AA5C-EE5E-BFA595098CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCA8E07-03EC-AA5C-EE5E-BFA595098CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5067125-BDA4-44DF-A75B-13485D70BF9D}
+	EndGlobalSection
+EndGlobal
