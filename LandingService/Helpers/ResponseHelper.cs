@@ -16,7 +16,7 @@ namespace LandingService.Helpers {
     }
     public static ResponseModel CreateForDelete(Guid id) {
       return new ResponseModel {
-        ResponseMessage = $"Deleted data for id {id}".
+        ResponseMessage = $"Deleted data for id {id}",
         Id = id,
         CreatedAt = DateTime.UtcNow,
         UpdatedAt = DateTime.UtcNow,
@@ -44,7 +44,7 @@ namespace LandingService.Helpers {
     public static ResponseModel CreateForCreateNew(CreateRequest request) {
       var expiry = request.ExpiryDate ?? DateTime.UtcNow.AddYears(1);
       return new ResponseModel {
-        ResponseMessage = $"Created data {request.Data} quantity: {request.Quanity}. Expiry: {expiry}",
+        ResponseMessage = $"Created data {request.Data} quantity: {request.Quantity}. Expiry: {expiry}",
         Id = Guid.NewGuid(),
         CreatedAt = DateTime.UtcNow,
         UpdatedAt = DateTime.UtcNow,
@@ -58,7 +58,7 @@ namespace LandingService.Helpers {
         CreatedAt = DateTime.UtcNow,
         UpdatedAt = DateTime.UtcNow,
         Payload = new[] { updatedItem}
-      }
+      };
     }
   }
 }

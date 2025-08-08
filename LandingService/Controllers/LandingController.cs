@@ -24,7 +24,7 @@ namespace LandingService.Controllers {
 
    [HttpGet]
    [Route("get-all")]
-   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
+   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
     
     public Task<IActionResult> GetAll() {
       return Task.FromResult(ControllerHelper.HandleGetAll(_items));
@@ -32,7 +32,7 @@ namespace LandingService.Controllers {
 
    [HttpGet]
    [Route("get-by-id/{id:guid}")]
-   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
+   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
 
    public Task<IActionResult> GetById(Guid id) {
     // Waiting to implement
@@ -42,7 +42,7 @@ namespace LandingService.Controllers {
 
   [HttpPut]
   [Route("updated/{id:guid}")]
-  [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
+  [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
 
   public Task<IActionResult> Update(Guid id, [FromBody] CreateRequest requestUpdated) {
     return Task.FromResult(ControllerHelper.HandleUpdate(_items, id, requestUpdated));
@@ -50,7 +50,7 @@ namespace LandingService.Controllers {
 
   [HttpDelete]
   [Route("delete/{id:guid}")]
-  [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
+  [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
 
   public Task<IActionResult> Delete(Guid id) {
     // waiting to implement. 

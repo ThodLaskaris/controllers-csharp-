@@ -18,11 +18,17 @@ namespace LandingService.Helpers {
    public static IActionResult HandleGetAll(IEnumerable<CreateRequest> items) {
     return Handle(items, ResponseHelper.CreateForGetAll);
    }
-   public static IActionResult HandleGetById(CreateRequest item) {
+   public static IActionResult HandleGetById(List<CreateRequest> items, Guid id) {
+    var item = items.Find(x => x.Id == id);
+    if( item == null) {
+      return new NotFoundObjectResult(
+        ErrorHelper.CreateErrorResponse($"Item with id {id} not found")
+      );
+    }
     return Handle(item, ResponseHelper.CreateForGetById);
    }
 
-   public static IActionResult HandleDelete(Guid id) {
+   public static IActionResult HandleDelete(List<CreateRequest> items, Guid id) {
     return Handle(id, ResponseHelper.CreateForDelete);
    }
 
