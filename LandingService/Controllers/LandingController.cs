@@ -10,47 +10,73 @@ namespace LandingService.Controllers {
   [ApiController]
   [Route("api/[controller]")]
   public class LandingController : ControllerBase {
+   private static readonly List<CreateRequest> _items = new List<CreateRequest>();
 
-    [HttpPost]
-    [Route("create-new")]
-    [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status201Created)]
-    public Task<IActionResult> CreateNew([FromBody] CreateRequest request) {
-      var expiry = request.ExpiryDate ?? DateTime.UtcNow.AddYears(1);
-      return Task.FromResult(ControllerHelper.HandleAction(
-        $"New objected created with data: {request.Data}, quantity: {request.Quantity}, expiry: {expiry}",
-        $"Created data {request.Data} qty: {request.Quantity}, expiry: {expiry}"
-      ));
-    }
+   [HttpPost]
+   [Route("create-new")]
+   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status201Created)]
 
-    [HttpGet]
-    [Route("get-all")]
-    [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
-    public Task<IActionResult> GetAll()  {
+   public Task<IActionResult> CreateNew([FromBody] CreateRequest request) {
+    request.Id = Guid.NewGuid();
+    _items.Add(request);
+    return Task.FromResult(ControllerHelper.HandleCreateNew(request));
+   }
+
+   [HttpGet]
+   [Route("get-all")]
+   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
     
-      return Task.FromResult(ControllerHelper.HandleAction("Fetching data..", "Fetched data for all objects"));
+    public Task<IActionResult> GetAll() {
+      return Task.FromResult(ControllerHelper.HandleGetAll(_items));
     }
 
-    [HttpGet]
-    [Route("get-by-id/{id:guid}")]
-    [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
-    public Task<IActionResult> GetById(Guid id) {
-      return Task.FromResult(ControllerHelper.HandleAction("$fecthed id {id}", $"Fetched data for id {id}"));
-    }
+   [HttpGet]
+   [Route("get-by-id/{id:guid}")]
+   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
 
-    [HttpPut]
-    [Route("update/{id:guid}")]
-    [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
-    public Task<IActionResult> Update(Guid id, [FromBody] string data) {
-      return Task.FromResult(ControllerHelper.HandleAction($"Updated object for id: {id} with data: {data}",
-      $"Updated data for id {id}"));
-    } 
+   public Task<IActionResult> GetById(Guid id) {
+    // Waiting to implemnet
+   } 
 
-    [HttpDelete]
-    [Route("delete/{id:guid}")]
-    [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200OK)]
-    public Task<IActionResult> Delete(Guid id) {
-      return Task.FromResult(ControllerHelper.HandleAction($"Deleted object with id: {id}",
-      $"Deleted data for id {id}"));
-    }
-    }
+  [HttpPut]
+  [Route("updated/{id:guid}")]
+  [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
+
+  public Task<IActionResult> Update(Guid id, [FromBody] CreateRequest requestUpdated) {
+    return Task.FromResult(ControllerHelper.HandleUpdate(_items, id, requestUpdated));
   }
+
+  [HttpDelete]
+  [Route("delete/{id:guid}")]
+  [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
+
+  public Task<IActionResult> Delete(Guid id) {
+    // waiting to implement.
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+    }
+}
