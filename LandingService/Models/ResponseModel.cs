@@ -16,6 +16,5 @@ public string Data { get; set; }
 public int Quantity {get; set;}
 public DateTime? ExpiryDate {get; set;}
 
+   }
 }
-}
-// Mediator cemetery watch accounting service καλυτερα srv accounting service
