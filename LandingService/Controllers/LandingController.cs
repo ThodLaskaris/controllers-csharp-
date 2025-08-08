@@ -35,7 +35,9 @@ namespace LandingService.Controllers {
    [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
 
    public Task<IActionResult> GetById(Guid id) {
-    // Waiting to implemnet
+    // Waiting to implement
+    return Task.FromResult(ControllerHelper.HandleGetById(_items, id));
+    
    } 
 
   [HttpPut]
@@ -51,7 +53,8 @@ namespace LandingService.Controllers {
   [ProducesResponseType(typeof(ResponseModel), StatusCodes.Status200Ok)]
 
   public Task<IActionResult> Delete(Guid id) {
-    // waiting to implement.
+    // waiting to implement. 
+    return Task.FromResult(ControllerHelper.HandleDelete(_items, id));
   }
 
 
